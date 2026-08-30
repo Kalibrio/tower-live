@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Tower</title>
+  <style>
+    html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; background: #0e1420; touch-action: none; }
+    #app { position: fixed; inset: 0; }
+    canvas { display: block; }
+    #hud {
+      position: fixed; inset: 0; pointer-events: none;
+      font-family: "Avenir Next", "Segoe UI", system-ui, sans-serif;
+      color: #fff; user-select: none; -webkit-user-select: none;
+    }
+    #score {
+      position: absolute; top: max(18px, env(safe-area-inset-top)); left: 0; right: 0;
+      text-align: center; font-size: 44px; font-weight: 800;
+      text-shadow: 0 2px 12px rgba(0,0,0,.5);
+    }
+    #height-warning {
+      position: absolute; top: 96px; left: 0; right: 0; text-align: center;
+      font-size: 18px; font-weight: 700; color: #ff5d5d; opacity: 0;
+      transition: opacity .2s; text-shadow: 0 1px 8px rgba(0,0,0,.6);
+    }
+    #cooldown {
+      position: absolute; bottom: max(26px, env(safe-area-inset-bottom)); left: 50%;
+      width: 120px; height: 8px; margin-left: -60px;
+      background: rgba(255,255,255,.18); border-radius: 4px; overflow: hidden;
+    }
+    #cooldown-fill { height: 100%; width: 100%; background: #ffd34d; border-radius: 4px; }
+    #gameover {
+      position: absolute; inset: 0; display: none; flex-direction: column;
+      align-items: center; justify-content: center; gap: 18px;
+      background: rgba(10, 14, 24, .72); pointer-events: auto;
+    }
+    #gameover h1 { margin: 0; font-size: 52px; font-weight: 900; letter-spacing: .04em; }
+    #gameover p { margin: 0; font-size: 22px; opacity: .85; }
+    #gameover button {
+      pointer-events: auto; cursor: pointer; border: 0; border-radius: 14px;
+      padding: 14px 44px; font-size: 22px; font-weight: 800;
+      font-family: inherit; color: #3a2c00; background: #ffd34d;
+      box-shadow: 0 6px 0 #c99e1f;
+    }
+    #gameover button:active { transform: translateY(3px); box-shadow: 0 3px 0 #c99e1f; }
+  </style>
+  <script type="module" crossorigin src="/assets/index-NNFjhBFE.js"></script>
+</head>
+<body>
+  <div id="app"></div>
+  <div id="hud">
+    <div id="score">0</div>
+    <div id="height-warning">TOWER TOO HIGH!</div>
+    <div id="cooldown"><div id="cooldown-fill"></div></div>
+    <div id="gameover">
+      <h1>GAME OVER</h1>
+      <p>The tower reached the top</p>
+      <p id="final-score"></p>
+      <button id="restart">PLAY AGAIN</button>
+    </div>
+  </div>
+</body>
+</html>
